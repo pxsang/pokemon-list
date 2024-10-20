@@ -26,3 +26,15 @@ export interface IPokemonDetail {
     };
   };
 }
+
+export interface IPokemonTypeDetail {
+  id: number;
+  name: string;
+  pokemon: {
+    pokemon: IPokemon;
+  }[];
+}
+
+export type NormalizePokemonType = IPokemonTypeDetail & {
+  pokemon: IPokemon[];
+};

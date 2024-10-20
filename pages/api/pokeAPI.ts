@@ -3,6 +3,7 @@ import {
   IPokemonType,
   IPokemon,
   IPokemonDetail,
+  IPokemonTypeDetail,
 } from "../types/Pokemon";
 
 const BASE_URL = "https://pokeapi.co/api/v2";
@@ -28,9 +29,20 @@ export async function fetchTypes() {
   }
 }
 
-export async function fetchPokemonList() {
+export async function fetchTypeDetail(url: string) {
   try {
-    const url = `${BASE_URL}/pokemon`;
+    const data = await fetchData<IPokemonTypeDetail>(url);
+
+    return data;
+  } catch (error) {
+    console.error(`Error fetching Pokemon Detail: ${url}`, error);
+    throw error;
+  }
+}
+
+export async function fetchPokemonList(limit = 1200) {
+  try {
+    const url = `${BASE_URL}/pokemon?limit=${limit}`;
     const data = await fetchData<PokemonAPIListResponse<IPokemon>>(url);
 
     return data.results;
