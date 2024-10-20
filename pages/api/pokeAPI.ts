@@ -1,4 +1,9 @@
-import { PokemonAPIListResponse, PokemonType } from "../types/Pokemon";
+import {
+  PokemonAPIListResponse,
+  IPokemonType,
+  IPokemon,
+  IPokemonDetail,
+} from "../types/Pokemon";
 
 const BASE_URL = "https://pokeapi.co/api/v2";
 
@@ -14,11 +19,34 @@ export async function fetchData<T>(url: string): Promise<T> {
 export async function fetchTypes() {
   try {
     const url = `${BASE_URL}/type`;
-    const data = await fetchData<PokemonAPIListResponse<PokemonType>>(url);
+    const data = await fetchData<PokemonAPIListResponse<IPokemonType>>(url);
 
     return data.results;
   } catch (error) {
     console.error(`Error fetching Pokemon Types:`, error);
+    throw error;
+  }
+}
+
+export async function fetchPokemonList() {
+  try {
+    const url = `${BASE_URL}/pokemon`;
+    const data = await fetchData<PokemonAPIListResponse<IPokemon>>(url);
+
+    return data.results;
+  } catch (error) {
+    console.error(`Error fetching Pokemon List:`, error);
+    throw error;
+  }
+}
+
+export async function fetchPokemonDetail(url: string) {
+  try {
+    const data = await fetchData<IPokemonDetail>(url);
+
+    return data;
+  } catch (error) {
+    console.error(`Error fetching Pokemon Detail: ${url}`, error);
     throw error;
   }
 }

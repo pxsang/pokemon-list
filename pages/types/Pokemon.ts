@@ -5,7 +5,24 @@ export interface PokemonAPIListResponse<T> {
   results: T[];
 }
 
-export interface PokemonType {
+export interface IPokemonType {
   name: string;
   url: string;
+}
+
+export interface IPokemon {
+  name: string;
+  url: string;
+}
+
+export interface IPokemonDetail {
+  id: number;
+  name: string;
+  sprites: {
+    other: {
+      "official-artwork": {
+        front_default: string;
+      };
+    };
+  };
 }

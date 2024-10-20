@@ -1,3 +1,8 @@
+"use client";
+import { useEffect, useState } from "react";
+import { fetchPokemonList } from "@/pages/api/pokeAPI";
+import type { IPokemon } from "@/pages/types/Pokemon";
+
 import Pokemon from "../Pokemon/Pokemon";
 
 export interface Pokemon {
@@ -6,36 +11,22 @@ export interface Pokemon {
   artwork: string;
 }
 
-interface PokemonListProps {
-  data?: Pokemon[];
-}
+export default function PokemonList() {
+  const [pokemonList, setPokemonList] = useState<IPokemon[]>([]);
 
-const mockData: Pokemon[] = [
-  {
-    id: 1,
-    name: "bulbasaur",
-    artwork:
-      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
-  },
-  {
-    id: 2,
-    name: "ivysaur",
-    artwork:
-      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/2.png",
-  },
-  {
-    id: 3,
-    name: "venusaur",
-    artwork:
-      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/3.png",
-  },
-];
+  useEffect(() => {
+    async function fetchData() {
+      const pokemonList = await fetchPokemonList();
 
-export default function PokemonList({ data = mockData }: PokemonListProps) {
+      setPokemonList(pokemonList);
+    }
+
+    fetchData();
+  }, []);
   return (
     <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-4">
-      {data.map((pokemon) => (
-        <Pokemon key={pokemon.id} data={pokemon} />
+      {pokemonList.map((pokemon) => (
+        <Pokemon key={pokemon.url} data={pokemon} />
       ))}
     </div>
   );

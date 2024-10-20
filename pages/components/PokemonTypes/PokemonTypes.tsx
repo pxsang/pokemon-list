@@ -1,12 +1,11 @@
 "use client";
-
 import { useEffect, useState } from "react";
 import { clsx } from "clsx";
 import { fetchTypes } from "@/pages/api/pokeAPI";
-import type { PokemonType } from "@/pages/types/Pokemon";
+import type { IPokemonType } from "@/pages/types/Pokemon";
 
 export default function PokemonTypes() {
-  const [types, setTypes] = useState<PokemonType[]>([]);
+  const [types, setTypes] = useState<IPokemonType[]>([]);
 
   useEffect(() => {
     async function fetchData() {
@@ -33,7 +32,7 @@ export default function PokemonTypes() {
 }
 
 interface PokemonTypeProps {
-  type: PokemonType;
+  type: IPokemonType;
   selected: boolean;
 }
 
