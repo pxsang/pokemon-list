@@ -1,5 +1,5 @@
-import type { IPokemon } from "@/pages/types/Pokemon";
-import Pokemon from "../Pokemon/Pokemon";
+import type { IPokemon } from "@/types/Pokemon";
+import Pokemon from "@/components/Pokemon/Pokemon";
 
 export interface Pokemon {
   id: number;

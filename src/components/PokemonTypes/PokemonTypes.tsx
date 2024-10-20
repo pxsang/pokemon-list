@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { clsx } from "clsx";
-import type { NormalizePokemonType } from "@/pages/types/Pokemon";
+import type { NormalizePokemonType } from "@/types/Pokemon";
 import { fetchTypeDetail, fetchTypes } from "@/pages/api/pokeAPI";
 
 interface PokemonTypesProps {

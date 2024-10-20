@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { IPokemon, NormalizePokemonType } from "../types/Pokemon";
+import { IPokemon, NormalizePokemonType } from "@/types/Pokemon";
 import usePagination, { PaginationWithTotal } from "./usePagination";
-import { fetchPokemonList } from "../api/pokeAPI";
+import { fetchPokemonList } from "@/pages/api/pokeAPI";
 import intersectionBy from "lodash/intersectionBy";
 
 function usePokemonList() {

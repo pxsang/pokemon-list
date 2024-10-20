@@ -1,4 +1,4 @@
-import { PaginationWithTotal } from "@/pages/hooks/usePagination";
+import { PaginationWithTotal } from "@/hooks/usePagination";
 import { useCallback, useMemo } from "react";
 
 interface PaginationProps {

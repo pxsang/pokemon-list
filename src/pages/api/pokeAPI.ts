@@ -4,7 +4,7 @@ import {
   IPokemon,
   IPokemonDetail,
   IPokemonTypeDetail,
-} from "../types/Pokemon";
+} from "../../types/Pokemon";
 
 const BASE_URL = "https://pokeapi.co/api/v2";
 
